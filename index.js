@@ -47,6 +47,10 @@ app.post("/ascii", async (req, res) => {
     }
 });
 
+app.post("/test", async (req, res) => {
+    console.log(req.body)
+});
+
 app.listen(PORT, () => {
     console.log(`Application listening on port ${PORT}!`);
 });

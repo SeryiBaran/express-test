@@ -12,11 +12,13 @@
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-					lol: true
+					lol: true,
 				}),
-			}).then(res => res.text()).then((data) => {
-				document.write(`<pre>${data}</pre>`)
-			});
+			})
+				.then((res) => res.text())
+				.then((data) => {
+					document.write(`<pre>${data}</pre>`);
+				});
 		</script>
 	</body>
 </html>
