@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title></title>
+	</head>
+	<body>
+		<script>
+			fetch("http://localhost:3000/ascii", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					lol: true
+				}),
+			}).then(res => res.text()).then((data) => {
+				document.write(`<pre>${data}</pre>`)
+			});
+		</script>
+	</body>
+</html>
