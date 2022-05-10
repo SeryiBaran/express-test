@@ -14,43 +14,43 @@ app.use(bodyParser.json());
 let api_data;
 
 async function fetchData() {
-    try {
-        await axios
-            .get("https://disease.sh/v3/covid-19/countries?sort=cases")
-            .then((res) => {
-                api_data = res.data;
-            });
-    } catch (e) {
-        console.log(e);
-    }
+  try {
+    await axios
+      .get("https://disease.sh/v3/covid-19/countries?sort=cases")
+      .then((res) => {
+        api_data = res.data;
+      });
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 fetchData();
 
-app.get("/api", async (req, res) => {
-    await fetchData();
-    res.send(api_data);
+app.get("/api", async ({ res }) => {
+  await fetchData();
+  res.send(api_data);
 });
 
-app.get("/", async (req, res) => {
-    res.sendFile(`${__dirname}/public/index.html`);
+app.get("/", ({ res }) => {
+  res.sendFile(`${__dirname}/public/index.html`);
 });
 
-app.get("/void", async (req, res) => {
-    res.sendFile(`${__dirname}/public/void.html`);
+app.get("/void", ({ res }) => {
+  res.sendFile(`${__dirname}/public/void.html`);
 });
 
 app.post("/ascii", async (req, res) => {
-    if (req.body.lol) {
-        let data = await fs.readFileSync("ascii.txt", "utf8");
-        res.send(data.toString());
-    }
+  if (req.body.lol) {
+    let data = await fs.readFileSync("ascii.txt", "utf8");
+    res.send(data.toString());
+  }
 });
 
-app.post("/test", async (req, res) => {
-    console.log(req.body)
+app.post("/test", (req) => {
+  console.log(req.body);
 });
 
 app.listen(PORT, () => {
-    console.log(`Application listening on port ${PORT}!`);
+  console.log(`Application listening on port ${PORT}!`);
 });
