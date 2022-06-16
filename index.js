@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 let api_data;
 
-async function fetchData() {
+const fetchData = async () => {
     try {
         await axios
             .get("https://disease.sh/v3/covid-19/countries?sort=cases")
@@ -28,7 +28,7 @@ async function fetchData() {
     } catch (e) {
         console.log(e);
     }
-}
+};
 
 fetchData();
 
