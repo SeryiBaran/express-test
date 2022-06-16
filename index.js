@@ -55,7 +55,7 @@ app.post("/ascii", async (req, res) => {
 app.post("/test", (req, res) => {
     console.log(req.body);
     res.status(200);
-    res.end();
+    res.send("Hello!");
 });
 
 app.listen(PORT, () => {
