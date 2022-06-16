@@ -3,11 +3,11 @@ import bodyParser from "body-parser";
 import path from "path";
 import fs from "fs";
 import axios from "axios";
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 const PORT = 3000;
@@ -23,10 +23,9 @@ async function fetchData() {
         await axios
             .get("https://disease.sh/v3/covid-19/countries?sort=cases")
             .then((res) => {
-            api_data = res.data;
-        });
-    }
-    catch (e) {
+                api_data = res.data;
+            });
+    } catch (e) {
         console.log(e);
     }
 }
@@ -53,8 +52,10 @@ app.post("/ascii", async (req, res) => {
     }
 });
 
-app.post("/test", (req) => {
+app.post("/test", (req, res) => {
     console.log(req.body);
+    res.status(200);
+    res.end();
 });
 
 app.listen(PORT, () => {
