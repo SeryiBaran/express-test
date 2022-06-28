@@ -1,7 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
 import path from "path";
-import fs from "fs";
 import axios from "axios";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
@@ -47,9 +46,12 @@ app.get("/void", ({ res }) => {
 
 app.post("/ascii", async (req, res) => {
     if (req.body.lol) {
-        let data = await fs.readFileSync("ascii.txt", "utf8");
-        res.send(data.toString());
+        res.sendFile(`${__dirname}/ascii.txt`);
     }
+});
+
+app.get("/s", async (req, res) => {
+    res.sendFile(`${__dirname}/ascii.txt`);
 });
 
 app.post("/test", (req, res) => {
